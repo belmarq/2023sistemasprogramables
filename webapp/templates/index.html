@@ -9,6 +9,7 @@
 <h4>URL: {{ URL }}</h4>
 <h4>IP: {{ IP }}</h4>
 <h4>Puerto: {{ puerto }}</h4>
+
 <h1>{{ titulo }}</h1>
 <h4> <a href="http://localhost:8000/api/sensor/">sensores</a></h4>
 <h4> <a href="http://localhost:8000/api/actuador/">actuadores</a></h4>
@@ -17,5 +18,9 @@
 <h4> <a href="http://localhost:8000/api/cliente/">clientes</a></h4>
 <h4> <a href="http://localhost:8000/api/cliente-sensor/">cliente-sensores</a></h4>
 <h4> <a href="http://localhost:8000/api/cliente-actuador/">cliente-actuadores</a></h4>
+
+{% for key, value in todos %}
+    {{ key }}: {{ value }}<br><br>
+{% endfor %}
 </body>
 </html>
