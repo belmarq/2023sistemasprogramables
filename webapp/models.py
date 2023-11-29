@@ -21,7 +21,9 @@ class Escritura(models.Model):
 
 
 class Cliente(models.Model):
-    nombre = models.CharField(max_length=255)
+    nombre = models.CharField(max_length=30, default="", null=False)
+    ip = models.CharField(max_length=30, default="", null=False)
+    puerto = models.CharField(max_length=30, default="", null=False)
 
 
 class ClienteSensor(models.Model):

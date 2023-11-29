@@ -16,10 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from webapp.views import Home
+from webapp.views import Home, GetIP
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('webapp.urls')),
     path('', Home.as_view(),name='home'),
+    path('getIP', GetIP.as_view(),name='getIP'),
 ]

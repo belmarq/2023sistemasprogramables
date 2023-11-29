@@ -18,11 +18,35 @@
 <h4> <a href="http://localhost:8000/api/cliente/">clientes</a></h4>
 <h4> <a href="http://localhost:8000/api/cliente-sensor/">cliente-sensores</a></h4>
 <h4> <a href="http://localhost:8000/api/cliente-actuador/">cliente-actuadores</a></h4>
+<br>
+<form method="post">
+  <label for="lampara">Lampara:</label><br>
+  <input type="number" id="lampara" name="lampara" ><br>
+  <input type="submit" value="Submit">
+</form>
+<br><br>
 
-<button> <a href="{{ URL }}">apagar</a></button>
-
-{% for key, value in todos %}
-    {{ key }}: {{ value }}<br><br>
+{% for cliente in clientes %}
+    <p>{{ cliente.nombre }} - {{ cliente.ip }} - {{ cliente.puerto }}</p> <button onclick="apagar({{ cliente.ip }})">Apagar</button><br><br>
 {% endfor %}
+
+<script>
+
+    function apagar(url){
+     url += "/ledoff";
+  fetch(url)
+    .then(function(response) {
+      return response.json(); // o response.text() si la respuesta es texto en lugar de JSON
+    })
+    .then(function(data) {
+      console.log(data);
+      // Puedes manipular los datos aquí
+    })
+    .catch(function(error) {
+      console.log('Hubo un problema con la solicitud Fetch:', error);
+    });
+    }
+
+</script>
 </body>
 </html>
